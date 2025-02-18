@@ -105,6 +105,13 @@ public class Main {
         heroes.forEach(System.out::println);
     }
 
+    public static void displayGalacticEvents(List<Event> events) {
+        events.stream()
+                .filter(event -> event.getKonfrontationstyp() == Konfrontationstyp.Galaktisch)
+                .sorted(Comparator.comparing(Event::getDatum).reversed())
+                .forEach(event -> System.out.println(event.getDatum() + ": " + event.getHeld() + " vs. " + event.getAntagonist() + " - " + event.getOrt()));
+    }
+    
 
 
 }
