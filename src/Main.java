@@ -96,6 +96,15 @@ public class Main {
         return events;
     }
 
-    
+    public static void displayHeroesWithHigherGlobalInfluence(List<Event> events, double threshold) {
+        Set<String> heroes = events.stream()
+                .filter(event -> event.getGlobalerEinfluss() > threshold)
+                .map(Event::getHeld)
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        System.out.println("Heroes with higher global influence than " + threshold + ":");
+        heroes.forEach(System.out::println);
+    }
+
+
 
 }
